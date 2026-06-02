@@ -6,6 +6,10 @@
   <title>Nieuwsbrief — Van Duren Padel Academy</title>
   <meta name="description" content="Schrijf je in voor de nieuwsbrief van Van Duren Padel Academy en blijf op de hoogte van clinics, toernooien en daluur-acties.">
   <link rel="stylesheet" href="/assets/site.css">
+  <!-- Motion-flag: synchroon in de <head> zodat de pre-hide-CSS al vóór de
+       eerste paint geldt (geen flikkering). Alleen aan als JS draait én de
+       gebruiker geen reduced-motion heeft ingesteld. -->
+  <script>window.matchMedia&&matchMedia("(prefers-reduced-motion: no-preference)").matches&&document.documentElement.classList.add("motion")</script>
   <script src="/assets/site-chrome.js" defer></script>
 </head>
 <body>

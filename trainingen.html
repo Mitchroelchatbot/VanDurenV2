@@ -6,6 +6,10 @@
   <title>Trainingen — Van Duren Padel Academy</title>
   <meta name="description" content="Padeltrainingen onder de Babolat Padel Academy Madrid: proefles, privéles en groepsles in Son en Breugel.">
   <link rel="stylesheet" href="/assets/site.css">
+  <!-- Motion-flag: synchroon in de <head> zodat de pre-hide-CSS al vóór de
+       eerste paint geldt (geen flikkering). Alleen aan als JS draait én de
+       gebruiker geen reduced-motion heeft ingesteld. -->
+  <script>window.matchMedia&&matchMedia("(prefers-reduced-motion: no-preference)").matches&&document.documentElement.classList.add("motion")</script>
   <script src="/assets/site-chrome.js" defer></script>
 </head>
 <body>
