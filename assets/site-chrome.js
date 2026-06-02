@@ -41,6 +41,18 @@
     document.head.appendChild(icon);
   }
 
+  /* Hero-watermerk centraal injecteren: enorme laag-contrast "VAN DUREN"
+     achter de content. Eerste kind van .hero, achter .hero__inner, aria-hidden
+     en pointer-events:none zodat het puur decoratief is. */
+  var hero = document.querySelector(".hero");
+  if (hero && !hero.querySelector(".hero__watermark")) {
+    var wm = document.createElement("span");
+    wm.className = "hero__watermark";
+    wm.setAttribute("aria-hidden", "true");
+    wm.textContent = "Van Duren";
+    hero.insertBefore(wm, hero.firstChild);
+  }
+
   /* Motion-laag centraal laden (GSAP + ScrollTrigger + Lenis).
      Alleen wanneer html.motion gezet is — d.w.z. JS aan én geen reduced-motion.
      Reduced-motion/no-JS laden dit bestand nooit: geen smooth scroll, geen animaties. */
