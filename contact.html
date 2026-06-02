@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact — Van Duren Padel Academy</title>
+  <meta name="description" content="Contactgegevens, adres en openingstijden van Van Duren Padel Academy in Son en Breugel. Stel je vraag via het contactformulier.">
+  <link rel="stylesheet" href="/assets/site.css">
+  <script src="/assets/site-chrome.js" defer></script>
+</head>
+<body>
+  <main id="main">
+
+    <section class="hero pagehero">
+      <div class="container hero__inner">
+        <span class="eyebrow">Contact</span>
+        <h1>Neem contact op</h1>
+        <p class="lead">Vragen over lessen, een clinic, een contractbaan of sponsoring?
+          We reageren doorgaans binnen één werkdag.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container split">
+
+        <div>
+          <h2>Gegevens</h2>
+          <ul class="info-list">
+            <li><span>Adres</span><span>Wolverstraat 2, 5691 PV Son en Breugel</span></li>
+            <li><span>E-mail</span><span><a href="mailto:vanduren@indoorpadelcentrum.nl">vanduren@indoorpadelcentrum.nl</a></span></li>
+            <li><span>Reactietijd</span><span>± 1 werkdag</span></li>
+          </ul>
+
+          <p class="todo" style="margin-top:1rem">TODO: telefoonnummer nog aanleveren (placeholder in CONTENT.md).</p>
+          <p class="todo" style="margin-top:.6rem">TODO: KvK-nummer controleren/aanleveren (placeholder in CONTENT.md).</p>
+
+          <h3 style="margin-top:2rem">Openingstijden</h3>
+          <ul class="info-list">
+            <li><span>Maandag–Vrijdag</span><span>08:00 – 23:00</span></li>
+            <li><span>Zaterdag</span><span>09:00 – 22:00</span></li>
+            <li><span>Zondag</span><span>09:00 – 22:00</span></li>
+          </ul>
+
+          <p style="margin-top:1.5rem">
+            <a class="btn btn--ghost"
+               href="https://www.google.com/maps/search/?api=1&query=Wolverstraat+2+5691+PV+Son+en+Breugel"
+               target="_blank" rel="noopener">Route via Google Maps</a>
+          </p>
+        </div>
+
+        <div>
+          <h2>Stuur een bericht</h2>
+          <form class="form" data-contact novalidate>
+            <label>Naam
+              <input type="text" name="naam" required>
+            </label>
+            <label>E-mail
+              <input type="email" name="email" required>
+            </label>
+            <label>Onderwerp
+              <select name="onderwerp" required>
+                <option value="">Kies een onderwerp…</option>
+                <option>Lessen / proefles</option>
+                <option>Bedrijfsclinic</option>
+                <option>Contractbaan</option>
+                <option>Toernooi / evenement</option>
+                <option>Sponsoring</option>
+                <option>Iets anders</option>
+              </select>
+            </label>
+            <label>Bericht
+              <textarea name="bericht" required></textarea>
+            </label>
+            <button class="btn btn--primary" type="submit">Verstuur bericht</button>
+            <p class="form-status" data-contact-status></p>
+            <p class="note">Let op: dit formulier verstuurt nog geen e-mail (demo). Voor een
+              echte verzending koppelen we eerst een mail-/opslagbackend.</p>
+          </form>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+</body>
+</html>
