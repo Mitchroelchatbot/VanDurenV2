@@ -6,6 +6,10 @@
   <title>Clinics &amp; bedrijven — Van Duren Padel Academy</title>
   <meta name="description" content="Twee uur padel onder begeleiding voor bedrijfsuitjes, teambuilding en vriendengroepen vanaf 4 personen. Inclusief baanhuur en Babolat materiaal.">
   <link rel="stylesheet" href="/assets/site.css">
+  <!-- Motion-flag: synchroon in de <head> zodat de pre-hide-CSS al vóór de
+       eerste paint geldt (geen flikkering). Alleen aan als JS draait én de
+       gebruiker geen reduced-motion heeft ingesteld. -->
+  <script>window.matchMedia&&matchMedia("(prefers-reduced-motion: no-preference)").matches&&document.documentElement.classList.add("motion")</script>
   <script src="/assets/site-chrome.js" defer></script>
 </head>
 <body>

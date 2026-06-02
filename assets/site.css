@@ -69,11 +69,12 @@ h1, h2, h3, h4 {
   margin: 0 0 .5em;
   font-weight: 700;
   letter-spacing: -.01em;
+  text-wrap: balance;          /* nettere koppen-afbreking (premium) */
 }
 h1 { font-size: clamp(2.2rem, 6vw, 4rem); }
 h2 { font-size: clamp(1.7rem, 4vw, 2.6rem); }
 h3 { font-size: clamp(1.2rem, 2.5vw, 1.5rem); }
-p  { margin: 0 0 1rem; color: var(--text-soft); }
+p  { margin: 0 0 1rem; color: var(--text-soft); text-wrap: pretty; }
 
 .eyebrow {
   font-family: var(--font-head);
@@ -148,7 +149,7 @@ p  { margin: 0 0 1rem; color: var(--text-soft); }
   text-transform: uppercase; letter-spacing: .08em;
   padding: .25rem .7rem; border-radius: 999px;
 }
-.option__price { font-family: var(--font-head); font-size: 2rem; font-weight: 700; color: var(--text); margin: .3rem 0; }
+.option__price { font-family: var(--font-head); font-size: 2rem; font-weight: 700; color: var(--text); margin: .3rem 0; font-variant-numeric: tabular-nums; }
 .option__price small { font-size: .9rem; color: var(--text-mute); font-weight: 500; }
 .option ul.ticks { list-style: none; margin: 1rem 0 1.5rem; display: grid; gap: .55rem; }
 .option ul.ticks li { position: relative; padding-left: 1.6rem; color: var(--text-soft); font-size: .95rem; }
@@ -163,7 +164,7 @@ p  { margin: 0 0 1rem; color: var(--text-soft); }
 .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
 @media (max-width: 700px) { .stats { grid-template-columns: repeat(2, 1fr); } }
 .stat { text-align: center; padding: 1.2rem 1rem; border: 1px solid var(--line); border-radius: var(--radius-sm); background: var(--glass-bg); }
-.stat__num { font-family: var(--font-head); font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 700; color: var(--accent); }
+.stat__num { font-family: var(--font-head); font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 700; color: var(--accent); font-variant-numeric: tabular-nums; }
 .stat__label { font-size: .85rem; color: var(--text-mute); text-transform: uppercase; letter-spacing: .08em; }
 
 /* ---------- Hero ---------- */
@@ -327,3 +328,49 @@ p  { margin: 0 0 1rem; color: var(--text-soft); }
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 .skip-link { position: absolute; left: -9999px; }
 .skip-link:focus { left: 1rem; top: 1rem; background: var(--accent); color: #10110d; padding: .6rem 1rem; border-radius: 8px; z-index: 100; }
+
+/* ============================================================
+   MICRO-INTERACTIES (puur CSS — geen GSAP nodig)
+   ============================================================ */
+.card { transition: transform .2s ease, border-color .2s ease, background .2s ease; }
+a.card:hover, .card--feature:hover { transform: translateY(-3px); border-color: rgba(195,244,0,.35); background: rgba(255,255,255,.06); }
+.option { transition: transform .2s ease, border-color .2s ease; }
+.option:hover { transform: translateY(-3px); }
+.stat { transition: transform .2s ease, border-color .2s ease; }
+.stat:hover { border-color: rgba(195,244,0,.3); }
+
+/* ============================================================
+   MOTION-LAAG  (GSAP + ScrollTrigger + Lenis)
+   Pre-hide gebeurt ALLEEN onder html.motion. Die class wordt synchroon
+   in de <head> gezet, en uitsluitend wanneer JS aan staat én de gebruiker
+   geen reduced-motion heeft. Zonder die class is alles gewoon zichtbaar —
+   dus reduced-motion én no-JS krijgen automatisch de statische site.
+   De motion-laag verwijdert de class ook als de CDN faalt (failsafe).
+   ============================================================ */
+html.motion .hero__inner > *,
+html.motion .stats > *,
+html.motion .grid > *,
+html.motion .section__head,
+html.motion .split > div,
+html.motion .media-placeholder {
+  opacity: 0;
+  transform: translateY(20px);
+  will-change: opacity, transform;
+}
+
+/* Lenis-basis: smooth scroll mag de native scroll-behavior niet dubbelen */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: hidden; }
+
+/* Harde garantie: reduced-motion = nooit verbergen, nooit smooth scroll */
+@media (prefers-reduced-motion: reduce) {
+  html.motion .hero__inner > *,
+  html.motion .stats > *,
+  html.motion .grid > *,
+  html.motion .section__head,
+  html.motion .split > div,
+  html.motion .media-placeholder { opacity: 1 !important; transform: none !important; will-change: auto; }
+  html { scroll-behavior: auto !important; }
+}

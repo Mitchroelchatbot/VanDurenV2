@@ -41,6 +41,16 @@
     document.head.appendChild(icon);
   }
 
+  /* Motion-laag centraal laden (GSAP + ScrollTrigger + Lenis).
+     Alleen wanneer html.motion gezet is — d.w.z. JS aan én geen reduced-motion.
+     Reduced-motion/no-JS laden dit bestand nooit: geen smooth scroll, geen animaties. */
+  if (document.documentElement.classList.contains("motion")) {
+    var motion = document.createElement("script");
+    motion.src = "/assets/site-motion.js";
+    motion.defer = true;
+    document.head.appendChild(motion);
+  }
+
   /* Huidige pad normaliseren (cleanUrls: /baanhuur, root = /) */
   var path = location.pathname.replace(/\.html$/, "").replace(/\/$/, "");
   if (path === "" || path === "/index") path = "/";

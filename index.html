@@ -6,6 +6,10 @@
   <title>Van Duren Padel Academy — Altijd padel in Son</title>
   <meta name="description" content="Indoor padel in Son en Breugel op internationale WPT-banen. Train onder Martin & Bennet van Duren, gediplomeerd via de Babolat Padel Academy Madrid.">
   <link rel="stylesheet" href="/assets/site.css">
+  <!-- Motion-flag: synchroon in de <head> zodat de pre-hide-CSS al vóór de
+       eerste paint geldt (geen flikkering). Alleen aan als JS draait én de
+       gebruiker geen reduced-motion heeft ingesteld. -->
+  <script>window.matchMedia&&matchMedia("(prefers-reduced-motion: no-preference)").matches&&document.documentElement.classList.add("motion")</script>
   <script src="/assets/site-chrome.js" defer></script>
 </head>
 <body>
@@ -107,6 +111,7 @@
         </div>
         <div>
           <img src="/assets/martin-van-duren.webp" width="1024" height="1024"
+               loading="lazy" decoding="async"
                alt="Martin van Duren, hoofdcoach en oprichter">
         </div>
       </div>
